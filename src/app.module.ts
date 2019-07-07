@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser'; 
 import { UpgradeModule } from '@angular/upgrade/static';
 import moduleName from './app'
-import { HomeComponent } from './src/angular/component/home.component';
+import { HomeComponent } from './angular/component/home.component';
 declare var angular: angular.IAngularStatic;
 @NgModule({
     declarations: [

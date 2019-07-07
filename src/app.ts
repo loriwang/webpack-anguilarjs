@@ -1,19 +1,19 @@
 // import * as angular from 'angular';
 import * as uiRouter from 'angular-ui-router';
-import AppComponent from './app.component'
-import TestComponent from './src/component/test.component'
-import LoginController from './src/login/login.controller'
-import hightlightDirective from './src/directive/hightlight.directive'
-import routerConfig from './router'
-import HeaderDirective  from './src/directive/header/header.directive';
-import HomeController from './src/main/home/home.controller';
+import AppComponent from './angularJs/app.component'
+import TestComponent from './angularJs/component/test.component'
+import LoginController from './angularJs/login/login.controller'
+import hightlightDirective from './angularJs/directive/hightlight.directive'
+import routerConfig from '../router'
+import HeaderDirective  from './angularJs/directive/header/header.directive';
+import HomeController from './angularJs/main/home/home.controller';
 import 'angular-strap';
 import { downgradeComponent} from "@angular/upgrade/static"
-import "./src/pui/pui.mudule"
+import "./angularJs/pui/pui.mudule"
 declare var  angular:angular.IAngularStatic;
 
-import './src/main.less';
-import { HomeComponent } from './src/angular/component/home.component';
+import './angularJs/main.less';
+import { HomeComponent } from './angular/component/home.component';
 const MODULE_NAME = 'app1'
 angular.module(MODULE_NAME, [uiRouter,'puiComponent','mgcrea.ngStrap'])
     .config(routerConfig)

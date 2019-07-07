@@ -10,7 +10,7 @@ module.exports = {
     mode: 'development',
     devtool: 'source-map',
     entry: {
-        main: path.resolve(__dirname, './main.ts'),
+        main: path.resolve(__dirname, './src/main.ts'),
         vendors: ['jquery', 'lodash']
     },
     output: {
@@ -43,7 +43,8 @@ module.exports = {
                 loader: 'postcss-loader',
                 options:{
                     plugins:(loader) =>[
-                        require('autoprefixer')()
+                        require('autoprefixer')(),
+                        require('postcss-preset-env')(),
                     ]
                 }
             }]
@@ -128,7 +129,7 @@ module.exports = {
         // new BundleAnalyzerPlugin({
         //     analyzerPort:8888
         // }),
-        new webpack.ContextReplacementPlugin(/\@angular(\\|\/)core(\\|\/)fesm5/, path.join(__dirname, './')),
+        new webpack.ContextReplacementPlugin(/\@angular(\\|\/)core(\\|\/)fesm5/, path.join(__dirname, './src')),
         new webpack.HotModuleReplacementPlugin(),
     ],
     optimization: {
