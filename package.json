@@ -5,24 +5,36 @@
   "main": "index.js",
   "scripts": {
     "server": "webpack-dev-server --config webpack.config.js",
-    "dist": "webpack --config webpack.config.js"
+    "dist": "webpack --bail --config webpack.config.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@angular/common": "^8.1.0",
+    "@angular/compiler": "^8.1.0",
+    "@angular/core": "^8.1.0",
+    "@angular/forms": "^8.1.0",
+    "@angular/platform-browser": "^8.1.0",
+    "@angular/platform-browser-dynamic": "^8.1.0",
+    "@angular/router": "^8.1.0",
     "@angular/upgrade": "^8.1.0",
     "angular": "^1.7.8",
     "angular-strap": "^2.3.12",
     "angular-ui-router": "^0.4.2",
     "bootstrap": "^4.3.1",
+    "core-js": "^3.1.4",
     "expose-loader": "^0.7.5",
     "jquery": "^3.4.1",
     "lodash": "^4.17.11",
-    "webpack-bundle-analyzer": "^3.3.2"
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^6.5.2",
+    "webpack-bundle-analyzer": "^3.3.2",
+    "zone.js": "^0.9.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/polyfill": "^7.4.4",
+    "@types/angular": "^1.6.54",
     "autoprefixer": "^9.6.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",

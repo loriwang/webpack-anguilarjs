@@ -7,10 +7,10 @@ const {
 } = require('clean-webpack-plugin');
 module.exports = {
     mode: 'development',
-    devtool: 'inline-source-map',
+    devtool: 'source-map',
     entry: {
-        main: path.resolve(__dirname, './app.js'),
-        vendors: ['jquery', 'lodash', 'angular']
+        main: path.resolve(__dirname, './main.ts'),
+        vendors: ['jquery', 'lodash']
     },
     output: {
         path: path.resolve(__dirname, './dist'),
@@ -19,10 +19,7 @@ module.exports = {
         publicPath: '/',
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.html'],
-        alias: {
-            "@angular/upgrade/static": "@angular/upgrade/bundles/upgrade-static.umd.js"
-        }
+        extensions: ['.ts', '.tsx', '.js'],
     },
     devServer: {
         hot: true,

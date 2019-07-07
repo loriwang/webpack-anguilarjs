@@ -1,5 +1,5 @@
-import angular from 'angular';
-import uiRouter from 'angular-ui-router';
+import * as angular from 'angular';
+import * as uiRouter from 'angular-ui-router';
 import AppComponent from './app.component'
 import TestComponent from './src/component/test.component'
 import LoginController from './src/login/login.controller'
@@ -11,7 +11,9 @@ import 'angular-strap';
 import "./src/pui/pui.mudule"
 
 import './src/main.less';
-const AppModule = angular.module('app', [uiRouter,'puiComponent','mgcrea.ngStrap'])
+const MODULE_NAME = 'app1'
+console.log(angular);
+angular.module(MODULE_NAME, [uiRouter,'puiComponent','mgcrea.ngStrap'])
     .config(routerConfig)
     .controller('loginController', LoginController)
     .directive('hightlight',hightlightDirective)
@@ -23,6 +25,4 @@ const AppModule = angular.module('app', [uiRouter,'puiComponent','mgcrea.ngStrap
         console.log(`this is just test`)
     })
 
-    angular.bootstrap(document.body,['app'])
-
-export default AppModule;
+export default MODULE_NAME;
