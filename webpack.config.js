@@ -2,6 +2,7 @@ var webpack = require('webpack');
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const nodeExternals = require('webpack-node-externals')
 const {
     CleanWebpackPlugin
 } = require('clean-webpack-plugin');
@@ -39,7 +40,12 @@ module.exports = {
             }, {
                 loader: 'less-loader'
             }, {
-                loader: 'postcss-loader'
+                loader: 'postcss-loader',
+                options:{
+                    plugins:(loader) =>[
+                        require('autoprefixer')()
+                    ]
+                }
             }]
         }, {
             test: /\.(.jpe?g|png|gif)$i/,
@@ -68,7 +74,11 @@ module.exports = {
             test: /\.tsx?$/,
             use: ['ts-loader'],
             exclude: /node_modules/
-        }, {
+        },{
+            // Hide import warnings
+            test: /[\/\\]@angular[\/\\]core[\/\\].+\.js$/,
+            parser: { system: true },
+          },{
             test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
             use: [{
                 loader: 'url-loader',
@@ -118,7 +128,7 @@ module.exports = {
         // new BundleAnalyzerPlugin({
         //     analyzerPort:8888
         // }),
-        new webpack.NamedModulesPlugin(),
+        new webpack.ContextReplacementPlugin(/\@angular(\\|\/)core(\\|\/)fesm5/, path.join(__dirname, './')),
         new webpack.HotModuleReplacementPlugin(),
     ],
     optimization: {
