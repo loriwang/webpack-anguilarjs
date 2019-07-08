@@ -73,7 +73,7 @@ module.exports = {
             }]
         }, {
             test: /\.tsx?$/,
-            use: ['ts-loader'],
+            use: ['awesome-typescript-loader','angular2-template-loader','angular-router-loader'],
             exclude: /node_modules/
         },{
             // Hide import warnings
