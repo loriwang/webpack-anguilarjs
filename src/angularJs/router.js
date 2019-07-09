@@ -6,20 +6,20 @@ function routerConfig($locationProvider,$stateProvider, $urlRouterProvider) {
       name: 'main',
       url: '/main',
       abstract:true,
-      template:require("./src/angularJs/main/app/app.html"),
+      template:require('./main/app/app.html'),
       redirectTo: '/main/home'
     })
     .state('main.home',{
       name:'main.home',
       url:'/home',
-      template:require('./src/angularJs/main/home/home.html'),
+      template:require('./main/home/home.html'),
       controller:'homeController',
       controllerAs:'home'
     })
     .state('login',{
       name: 'login',
       url: '/login',
-      template:require('./src/angularJs/login/login.html'),
+      template:require('./login/login.html'),
       controller:'loginController',
       controllerAs:'login'
     });

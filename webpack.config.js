@@ -34,6 +34,9 @@ module.exports = {
         }, {
             test: /\.less$/,
             use: [{
+                loader:'to-string-loader'
+            },
+                {
                 loader: 'style-loader'
             }, {
                 loader: 'css-loader'
@@ -41,8 +44,8 @@ module.exports = {
                 loader: 'less-loader'
             }, {
                 loader: 'postcss-loader',
-                options:{
-                    plugins:(loader) =>[
+                options: {
+                    plugins: (loader) => [
                         require('autoprefixer')(),
                         require('postcss-preset-env')(),
                     ]
@@ -64,22 +67,37 @@ module.exports = {
             }]
         }, {
             test: /\.html/,
-            loader: ['html-loader']
+            exclude: path.resolve(__dirname, './index.html'),
+            use: [
+                {
+                    loader: 'html-loader',
+                    options: {
+                        attrs:[':data-ng-include'],
+                        interpolate: true
+                    }
+                },
+            ]
         }, {
             test: /\.js$/,
             exclude: /node_modules/,
+            enforce: 'pre',
             use: [{
-                loader: 'babel-loader',
-            }]
+                    loader: 'ng-annotate-loader'
+                }, {
+                    loader: 'babel-loader',
+                }
+            ]
         }, {
             test: /\.tsx?$/,
-            use: ['awesome-typescript-loader','angular2-template-loader','angular-router-loader'],
+            use: ['awesome-typescript-loader', 'angular2-template-loader', 'angular-router-loader'],
             exclude: /node_modules/
-        },{
+        }, {
             // Hide import warnings
             test: /[\/\\]@angular[\/\\]core[\/\\].+\.js$/,
-            parser: { system: true },
-          },{
+            parser: {
+                system: true
+            },
+        }, {
             test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
             use: [{
                 loader: 'url-loader',

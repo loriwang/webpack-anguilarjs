@@ -6,6 +6,11 @@
    <div>
        ng-strap 测试
        <p data-title="'这是一段文字测试'" bs-tooltip>这是一段文字测试</p>
-       <home></home>
+       <!-- home component 是使用的angular的组件 -->
+       <home [test-input]="home.homeComponentInput" (clicked-event)="home.clickEvent($event)"></home>
+        <!-- 测试使用 ng-include -->
+        <div ng-include="'app/item.html'">
+
+        </div>
    </div>
 </div>
