@@ -10,8 +10,9 @@ module.exports = {
     mode: 'development',
     devtool: 'source-map',
     entry: {
+
         main: path.resolve(__dirname, './src/main.ts'),
-        vendors: ['jquery', 'lodash']
+        vendors: ['jquery', 'lodash','angular'],
     },
     output: {
         path: path.resolve(__dirname, './dist'),
@@ -85,6 +86,10 @@ module.exports = {
                     loader: 'ng-annotate-loader'
                 }, {
                     loader: 'babel-loader',
+                    options:{
+                        "compact": false,
+                        "presets":["env"]
+                    }
                 }
             ]
         }, {
@@ -150,6 +155,15 @@ module.exports = {
         new webpack.ContextReplacementPlugin(/\@angular(\\|\/)core(\\|\/)fesm5/, path.join(__dirname, './src')),
         new webpack.HotModuleReplacementPlugin(),
     ],
+    node: {
+        global: true,
+        crypto: 'empty',
+        __dirname: true,
+        __filename: true,
+        Buffer: false,
+        clearImmediate: false,
+        setImmediate: false
+    },
     optimization: {
         splitChunks: {
             name: true,
